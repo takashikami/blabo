@@ -24,10 +24,15 @@ class SubjectsController < ApplicationController
   # POST /subjects
   # POST /subjects.json
   def create
+    file = params[:subject].delete(:file)
     @subject = Subject.new(subject_params)
 
     respond_to do |format|
-      if @subject.save
+      if file && @subject.save
+        @subject.pic = 'a%08d.jpg'%@subject.id
+        fn = Rails.root.to_path+'/files/'+@subject.pic
+        File.open(fn, 'wb'){|jpg| jpg.write(file.read)}
+        @subject.save
         format.html { redirect_to @subject, notice: 'Subject was successfully created.' }
         format.json { render :show, status: :created, location: @subject }
       else
