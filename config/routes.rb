@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :subjects
+  resources :subjects do
+    resources :comments
+  end
   get 'files/:id' => 'files#view'
 
   # The priority is based upon order of creation: first created -> highest priority.

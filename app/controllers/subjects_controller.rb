@@ -10,6 +10,7 @@ class SubjectsController < ApplicationController
   # GET /subjects/1
   # GET /subjects/1.json
   def show
+    @comment = @subject.comments.new
   end
 
   # GET /subjects/new
