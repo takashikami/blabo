@@ -1,5 +1,5 @@
 class SubjectsController < ApplicationController
-  before_action :set_subject, only: [:show, :edit, :update, :destroy]
+  before_action :set_subject, only: [:img, :show, :edit, :update, :destroy]
 
   # GET /subjects
   # GET /subjects.json
@@ -20,6 +20,11 @@ class SubjectsController < ApplicationController
 
   # GET /subjects/1/edit
   def edit
+  end
+
+  def img
+    fn = Rails.root.to_path + '/files/' + @subject.pic
+    send_data File.read(fn), :type => 'image/jpeg', :disposition => 'inline'
   end
 
   # POST /subjects
