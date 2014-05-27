@@ -9,11 +9,13 @@
 <div>
   <%= @subject.quote %>
 </div>
+<hr>
 
 <%= render partial: 'comment_form' %>
 
 <% @subject.comments.each do |comment| %>
 <div>
+  <hr>
   <%= comment.comment %>
 </div>
 <% end %>
