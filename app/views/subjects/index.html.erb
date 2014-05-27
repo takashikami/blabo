@@ -2,7 +2,7 @@
 
 <% @subjects.each do |subject| %>
     <div><h1><%= subject.title %></h1></div>
-    <div><%= link_to image_tag(subject_img_path subject), subject %></div>
+    <div><%= link_to image_tag(img_subject_path subject), subject %></div>
     <div><%= subject.quote %></div>
     <hr>
 <% end %>

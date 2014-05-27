@@ -1,9 +1,12 @@
 class SubjectsController < ApplicationController
-  before_action :set_subject, only: [:show, :edit, :update, :destroy]
+  before_action :set_subject, only: [:img, :show, :edit, :update, :destroy]
 
   # GET /subjects
   # GET /subjects.json
   def index
+    @subjects = Subject.all
+  end
+  def list
     @subjects = Subject.all
   end
 
@@ -23,8 +26,7 @@ class SubjectsController < ApplicationController
   end
 
   def img
-    @subject = Subject.find(params[:subject_id])
-    send_data File.read(filename(@subject)), :type => 'image/jpeg', :disposition => 'inline'
+    send_data File.read(filename(@subject)), type: 'image/jpeg', disposition: 'inline'
   end
 
   # POST /subjects
@@ -64,9 +66,10 @@ class SubjectsController < ApplicationController
   # DELETE /subjects/1
   # DELETE /subjects/1.json
   def destroy
+    File.unlink filename(@subject)
     @subject.destroy
     respond_to do |format|
-      format.html { redirect_to subjects_url, notice: 'Subject was successfully destroyed.' }
+      format.html { redirect_to list_subjects_url, notice: 'Subject was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

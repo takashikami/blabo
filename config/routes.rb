@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :subjects do
     resources :comments
-    get :img
+    get :img, on: :member
+    get :list, on: :collection
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
