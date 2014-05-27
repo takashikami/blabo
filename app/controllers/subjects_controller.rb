@@ -24,8 +24,7 @@ class SubjectsController < ApplicationController
 
   def img
     @subject = Subject.find(params[:subject_id])
-    fn = Rails.root.to_path + '/files/' + @subject.pic
-    send_data File.read(fn), :type => 'image/jpeg', :disposition => 'inline'
+    send_data File.read(filename(@subject)), :type => 'image/jpeg', :disposition => 'inline'
   end
 
   # POST /subjects
@@ -37,8 +36,7 @@ class SubjectsController < ApplicationController
     respond_to do |format|
       if file && @subject.save
         @subject.pic = 'a%08d.jpg'%@subject.id
-        fn = Rails.root.to_path+'/files/'+@subject.pic
-        File.open(fn, 'wb'){|jpg| jpg.write(file.read)}
+        File.open(filename(@subject), 'wb'){|jpg| jpg.write(file.read)}
         @subject.save
         format.html { redirect_to @subject, notice: 'Subject was successfully created.' }
         format.json { render :show, status: :created, location: @subject }
@@ -83,4 +81,8 @@ class SubjectsController < ApplicationController
     def subject_params
       params.require(:subject).permit(:title, :pic, :quote)
     end
+
+  def filename(subject)
+    Rails.root.to_path + '/files/' + subject.pic
+  end
 end
