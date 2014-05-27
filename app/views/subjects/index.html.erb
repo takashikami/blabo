@@ -1,29 +1,8 @@
 <h1>Listing subjects</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Pic</th>
-      <th>Quote</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @subjects.each do |subject| %>
-      <tr>
-        <td><%= subject.title %></td>
-        <td><%= subject.pic %></td>
-        <td><%= subject.quote %></td>
-        <td><%= link_to 'Show', subject %></td>
-        <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
-        <td><%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Subject', new_subject_path %>
+<% @subjects.each do |subject| %>
+    <div><h1><%= subject.title %></h1></div>
+    <div><%= link_to image_tag(img_subject_path subject), subject %></div>
+    <div><%= subject.quote %></div>
+    <hr>
+<% end %>

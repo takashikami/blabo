@@ -3,17 +3,19 @@
 <h1><%= @subject.title %></h1>
 
 <div>
-  <img src="<%= '%d/img'%@subject.id %>">
+  <img src="<%= img_subject_path @subject %>">
 </div>
 
 <div>
   <%= @subject.quote %>
 </div>
+<hr>
 
 <%= render partial: 'comment_form' %>
 
 <% @subject.comments.each do |comment| %>
 <div>
+  <hr>
   <%= comment.comment %>
 </div>
 <% end %>

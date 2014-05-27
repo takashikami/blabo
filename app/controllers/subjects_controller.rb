@@ -6,6 +6,9 @@ class SubjectsController < ApplicationController
   def index
     @subjects = Subject.all
   end
+  def list
+    @subjects = Subject.all
+  end
 
   # GET /subjects/1
   # GET /subjects/1.json
@@ -23,8 +26,7 @@ class SubjectsController < ApplicationController
   end
 
   def img
-    fn = Rails.root.to_path + '/files/' + @subject.pic
-    send_data File.read(fn), :type => 'image/jpeg', :disposition => 'inline'
+    send_data File.read(filename(@subject)), type: 'image/jpeg', disposition: 'inline'
   end
 
   # POST /subjects
@@ -36,8 +38,7 @@ class SubjectsController < ApplicationController
     respond_to do |format|
       if file && @subject.save
         @subject.pic = 'a%08d.jpg'%@subject.id
-        fn = Rails.root.to_path+'/files/'+@subject.pic
-        File.open(fn, 'wb'){|jpg| jpg.write(file.read)}
+        File.open(filename(@subject), 'wb'){|jpg| jpg.write(file.read)}
         @subject.save
         format.html { redirect_to @subject, notice: 'Subject was successfully created.' }
         format.json { render :show, status: :created, location: @subject }
@@ -65,9 +66,10 @@ class SubjectsController < ApplicationController
   # DELETE /subjects/1
   # DELETE /subjects/1.json
   def destroy
+    File.unlink filename(@subject)
     @subject.destroy
     respond_to do |format|
-      format.html { redirect_to subjects_url, notice: 'Subject was successfully destroyed.' }
+      format.html { redirect_to list_subjects_url, notice: 'Subject was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -82,4 +84,8 @@ class SubjectsController < ApplicationController
     def subject_params
       params.require(:subject).permit(:title, :pic, :quote)
     end
+
+  def filename(subject)
+    Rails.root.to_path + '/files/' + subject.pic
+  end
 end
