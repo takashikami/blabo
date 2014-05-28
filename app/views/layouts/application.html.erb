@@ -17,8 +17,8 @@
   <a href="#" data-icon="user" class="ui-btn-right">ログイン</a>
 <div data-role="navbar">
   <ul>
-    <li><%= link_to 'ホーム', subjects_path %></li>
     <li><%= link_to '叱ってもらう', new_subject_path %></li>
+    <li><%= link_to '褒めてもらう', '#' %></li>
   </ul>
 </div>
 </div>
@@ -28,10 +28,10 @@
 <div data-role="footer" data-position="fixed" style="overflow: hidden;">
   <div data-role="navbar">
     <ul>
-      <li><a href="company.html">運営会社</a></li>
+      <li><a href="/company.html" data-transition="pop">運営会社</a></li>
 <!--      <li><a href="policy.html">プライバシーポリシー</a></li> -->
-      <li><a href="rule.html">利用規約</a></li>
-      <li><a href="faq.html">よくある質問</a></li>
+      <li><a href="/rule.html">利用規約</a></li>
+      <li><a href="/faq.html">よくある質問</a></li>
 <!--      <li><a href="advertise.html">広告掲載</a></li> -->
     </ul>
   </div>

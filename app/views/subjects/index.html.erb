@@ -1,7 +1,9 @@
 <% @subjects.each do |subject| %>
-<div>
+<div data-role="container">
     <div><h2><%= subject.title %></h2></div>
-    <div><%= link_to image_tag(img_subject_path subject), subject %></div>
+    <div style="text-align: center; width:100%; max-height:200px; overflow: hidden">
+      <%= link_to image_tag(img_subject_path(subject)), subject %>
+    </div>
     <div><%= subject.quote %></div>
     <hr>
 </div>
