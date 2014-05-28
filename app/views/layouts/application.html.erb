@@ -5,11 +5,16 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script src="//use.edgefonts.net/aladin.js"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<div class="ui-header" data-position="fixed" data-role="header">
+<div data-role="header" data-position="fixed" style="overflow: hidden">
+  <!-- <h1 style="font-family: aladin, sans-serif; font-size: 120%;">stand by me</h1> -->
+  <h1>stand by me</h1>
+  <%= link_to 'ホーム', subjects_path, {'data-icon'=>'home', 'class'=>'ui-btn-left'} %>
+  <a href="#" data-icon="user" class="ui-btn-right">ログイン</a>
 <div data-role="navbar">
   <ul>
     <li><%= link_to 'ホーム', subjects_path %></li>
@@ -20,5 +25,16 @@
 
 <%= yield %>
 
+<div data-role="footer" data-position="fixed" style="overflow: hidden;">
+  <div data-role="navbar">
+    <ul>
+      <li><a href="company.html">運営会社</a></li>
+<!--      <li><a href="policy.html">プライバシーポリシー</a></li> -->
+      <li><a href="rule.html">利用規約</a></li>
+      <li><a href="faq.html">よくある質問</a></li>
+<!--      <li><a href="advertise.html">広告掲載</a></li> -->
+    </ul>
+  </div>
+</div>
 </body>
 </html>
