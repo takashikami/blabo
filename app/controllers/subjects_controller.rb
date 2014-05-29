@@ -66,7 +66,7 @@ class SubjectsController < ApplicationController
   # DELETE /subjects/1
   # DELETE /subjects/1.json
   def destroy
-    File.unlink filename(@subject)
+    File.unlink filename(@subject) rescue 0
     @subject.destroy
     respond_to do |format|
       format.html { redirect_to list_subjects_url, notice: 'Subject was successfully destroyed.' }
