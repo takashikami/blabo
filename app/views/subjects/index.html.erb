@@ -1,6 +1,6 @@
 <% @subjects.each do |subject| %>
-<div data-role="container">
-    <div><h2><%= subject.title %></h2></div>
+<div>
+    <h2><%= subject.title %></h2>
     <div style="text-align: center; width:100%; max-height:200px; overflow: hidden">
       <%= link_to image_tag(img_subject_path(subject)), subject %>
     </div>

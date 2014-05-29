@@ -9,6 +9,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div data-role="page">
 
 <div data-role="header" data-position="fixed" style="overflow: hidden">
   <!-- <h1 style="font-family: aladin, sans-serif; font-size: 120%;">stand by me</h1> -->
@@ -23,7 +24,9 @@
 </div>
 </div>
 
-<%= yield %>
+<div role="main" class="ui-content">
+  <%= yield %>
+</div>
 
 <div data-role="footer" data-position="fixed" style="overflow: hidden;">
   <div data-role="navbar">
@@ -36,5 +39,7 @@
     </ul>
   </div>
 </div>
+
+</div><!--page-->
 </body>
 </html>
