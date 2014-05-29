@@ -1,1 +1,5 @@
-precompile_assets: true  # precompile assets
+defaults:
+  copy_exclude:
+  - .git
+  precompile_assets: true
+  ignore_gemfile_lock_warning: true
