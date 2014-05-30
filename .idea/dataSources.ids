@@ -3,4 +3,10 @@
   <data-source source="LOCAL" name="Rails blabo: development" uuid="3f96de7d-5aad-4299-b1fe-6a55fddc053b">
     <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
   </data-source>
+  <data-source source="LOCAL" name="Rails blabo: test" uuid="d5740c16-1415-4d31-a59d-f8a037aaea70">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source source="LOCAL" name="Rails blabo: production" uuid="e22d9d58-d0b1-4d29-ad67-3eb11b5bc622">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
 </component>
