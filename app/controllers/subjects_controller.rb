@@ -86,6 +86,11 @@ class SubjectsController < ApplicationController
     end
 
   def filename(subject)
-    Rails.root.to_path + '/files/' + subject.pic
+    if ENV['user'] == 'deploy'
+      shareddir = '/data/blabo/shared'
+    else
+      shareddir = Rails.root.to_path
+    end
+     shareddir + '/files/' + subject.pic
   end
 end
