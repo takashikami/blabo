@@ -25,5 +25,5 @@ test:
 production:
   <<: *default
   database: blabo_production
-  username: blabo
-  password: <%= ENV['BLABO_DATABASE_PASSWORD'] %>
+#  username: blabo
+#  password: <%= ENV['BLABO_DATABASE_PASSWORD'] %>

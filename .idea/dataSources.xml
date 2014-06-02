@@ -19,8 +19,7 @@
       <driver-ref>mysql</driver-ref>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://127.0.0.1/blabo_production</jdbc-url>
-      <user-name>blabo</user-name>
-      <user-password>df96df8fdf97df8adfefdfe4dffcdff1df8ddfe8dfe6dfebdfe8dfe5dff5dfeedfebdffedfebdfe8dfebdff9dfefdff5dffadfebdff9dff9dffddfe5dff8dfeedf8ddff7df8adf8fdf94</user-password>
+      <user-name>root</user-name>
       <libraries />
     </data-source>
   </component>
