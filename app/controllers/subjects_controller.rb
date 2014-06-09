@@ -1,6 +1,6 @@
 class SubjectsController < ApplicationController
   before_action :set_subject, only: [:img, :show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :list]
+  before_action :authenticate_user!, except: [:index, :show, :img, :list]
 
   # GET /subjects
   # GET /subjects.json
