@@ -41,3 +41,7 @@ gem 'unicorn'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Use devise and omniauth
+gem 'devise'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'

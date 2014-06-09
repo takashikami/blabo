@@ -1,5 +1,6 @@
 class SubjectsController < ApplicationController
   before_action :set_subject, only: [:img, :show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :list]
 
   # GET /subjects
   # GET /subjects.json
@@ -91,6 +92,6 @@ class SubjectsController < ApplicationController
     else
       shareddir = Rails.root.to_path
     end
-     shareddir + '/files/' + subject.pic
+    shareddir + '/files/' + subject.pic
   end
 end

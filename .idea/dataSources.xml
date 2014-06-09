@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="3918349782">
+  <component name="DataSourceManagerImpl" format="xml" hash="3144852714">
     <data-source source="LOCAL" name="Rails blabo: development" uuid="3f96de7d-5aad-4299-b1fe-6a55fddc053b">
       <driver-ref>sqlite.xerial</driver-ref>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>

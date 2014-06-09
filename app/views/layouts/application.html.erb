@@ -15,7 +15,8 @@
   <!-- <h1 style="font-family: aladin, sans-serif; font-size: 120%;">stand by me</h1> -->
   <h1>stand by me</h1>
   <%= link_to 'ホーム', subjects_path, {'data-icon'=>'home', 'class'=>'ui-btn-left'} %>
-  <a href="#" data-icon="user" class="ui-btn-right">ログイン</a>
+  <%= link_to 'ログイン', user_omniauth_authorize_path(:facebook), {'data-icon'=>'user', 'class'=>'ui-btn-right'} %>
+<!--  <a href="#" data-icon="user" class="ui-btn-right">ログイン</a> -->
 <div data-role="navbar">
   <ul>
     <li><%= link_to '叱ってもらう', new_subject_path %></li>
@@ -23,6 +24,9 @@
   </ul>
 </div>
 </div>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 
 <div id="inner">
 <div role="main" class="ui-content" id="main">
