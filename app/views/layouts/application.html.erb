@@ -15,7 +15,13 @@
   <!-- <h1 style="font-family: aladin, sans-serif; font-size: 120%;">stand by me</h1> -->
   <h1>stand by me</h1>
   <%= link_to 'ホーム', subjects_path, {'data-icon'=>'home', 'class'=>'ui-btn-left'} %>
-  <%= link_to 'ログイン', user_omniauth_authorize_path(:facebook), {'data-icon'=>'user', 'class'=>'ui-btn-right'} %>
+
+  <% if user_signed_in? %>
+      <%= link_to 'ログアウト', destroy_user_session_path, {method: :delete, 'data-icon'=>'user', 'class'=>'ui-btn-right'} %>
+  <% else %>
+      <%= link_to 'ログイン', user_omniauth_authorize_path(:facebook), {'data-icon'=>'user', 'class'=>'ui-btn-right'} %>
+  <% end %>
+
 <!--  <a href="#" data-icon="user" class="ui-btn-right">ログイン</a> -->
 <div data-role="navbar">
   <ul>
