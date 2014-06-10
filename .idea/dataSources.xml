@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="3144852714">
-    <data-source source="LOCAL" name="Rails blabo: development" uuid="3f96de7d-5aad-4299-b1fe-6a55fddc053b">
-      <driver-ref>sqlite.xerial</driver-ref>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://127.0.0.1/blabo_development</jdbc-url>
-      <user-name>root</user-name>
-      <libraries />
-    </data-source>
+  <component name="DataSourceManagerImpl" format="xml" hash="2888001705">
     <data-source source="LOCAL" name="Rails blabo: test" uuid="d5740c16-1415-4d31-a59d-f8a037aaea70">
       <driver-ref>mysql</driver-ref>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
@@ -19,6 +12,13 @@
       <driver-ref>mysql</driver-ref>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://127.0.0.1/blabo_production</jdbc-url>
+      <user-name>root</user-name>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails blabo: development" uuid="e63bf75d-d688-4de9-ba6a-00a768e524ac">
+      <driver-ref>mysql</driver-ref>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://127.0.0.1/blabo_development</jdbc-url>
       <user-name>root</user-name>
       <libraries />
     </data-source>

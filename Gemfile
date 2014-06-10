@@ -45,3 +45,6 @@ gem 'unicorn'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+
+# Image
+gem 'mini_magick'

@@ -1,6 +1,6 @@
 class SubjectsController < ApplicationController
   before_action :set_subject, only: [:img, :show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show, :img, :list]
+  # before_action :authenticate_user!, except: [:index, :show, :img, :list]
 
   # GET /subjects
   # GET /subjects.json
@@ -27,7 +27,9 @@ class SubjectsController < ApplicationController
   end
 
   def img
-    send_data File.read(filename(@subject)), type: 'image/jpeg', disposition: 'inline'
+    data = File.read @subject.pic
+    img = MiniMagick::Image.read data
+    send_data data, type: img.mime_type, disposition: 'inline'
   end
 
   # POST /subjects
@@ -38,8 +40,7 @@ class SubjectsController < ApplicationController
 
     respond_to do |format|
       if file && @subject.save
-        @subject.pic = 'a%08d.jpg'%@subject.id
-        File.open(filename(@subject), 'wb'){|jpg| jpg.write(file.read)}
+        @subject.pic = save_image(file, @subject.id)
         @subject.save
         format.html { redirect_to @subject, notice: 'Subject was successfully created.' }
         format.json { render :show, status: :created, location: @subject }
@@ -67,7 +68,7 @@ class SubjectsController < ApplicationController
   # DELETE /subjects/1
   # DELETE /subjects/1.json
   def destroy
-    File.unlink filename(@subject) rescue 0
+    File.unlink @subject.pic rescue 0
     @subject.destroy
     respond_to do |format|
       format.html { redirect_to list_subjects_url, notice: 'Subject was successfully destroyed.' }
@@ -86,12 +87,31 @@ class SubjectsController < ApplicationController
       params.require(:subject).permit(:title, :pic, :quote)
     end
 
-  def filename(subject)
-    if ENV['USER'] == 'deploy'
-      shareddir = '/data/blabo/shared'
-    else
-      shareddir = Rails.root.to_path
+  def save_image(file, n)
+    image = MiniMagick::Image.read(file.read)
+
+    portrait = image[:width] < image[:height]
+    image_width = image[:width]
+    image.combine_options do |c|
+      c.gravity 'center'
+      c.crop "#{image_width}x#{image_width/4*3}+0+0"
     end
-    shareddir + '/files/' + subject.pic
+
+=begin
+    narrow = image[:width] < image[:height] ? image[:width] : image[:height]
+    image.combine_options do |c|
+      c.gravity 'center'
+      c.crop "#{narrow}x#{narrow}+0+0"
+    end
+=end
+
+    image.resize "640"
+    image.quality 70
+
+    shareddir = ENV['USER'] == 'deploy' ? '/data/blabo/shared' : Rails.root.to_path
+    filename = shareddir + '/files/' + 'a%08d.'%n + image[:format].to_s.downcase
+
+    image.write(filename)
+    filename
   end
 end
