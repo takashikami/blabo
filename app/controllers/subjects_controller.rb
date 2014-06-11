@@ -1,6 +1,6 @@
 class SubjectsController < ApplicationController
   before_action :set_subject, only: [:img, :show, :edit, :update, :destroy]
-  # before_action :authenticate_user!, except: [:index, :show, :img, :list]
+  before_action :authenticate_user!, only: [:new, :create]
 
   # GET /subjects
   # GET /subjects.json
@@ -19,7 +19,7 @@ class SubjectsController < ApplicationController
 
   # GET /subjects/new
   def new
-    @subject = Subject.new
+    @subject = current_user.subjects.new
   end
 
   # GET /subjects/1/edit
@@ -36,7 +36,7 @@ class SubjectsController < ApplicationController
   # POST /subjects.json
   def create
     file = params[:subject].delete(:file)
-    @subject = Subject.new(subject_params)
+    @subject = current_user.subjects.new(subject_params)
 
     respond_to do |format|
       if file && @subject.save
@@ -96,15 +96,6 @@ class SubjectsController < ApplicationController
       c.gravity 'center'
       c.crop "#{w}x#{w/4*3}+0+0"
     end if w < image[:height]
-
-=begin
-    narrow = image[:width] < image[:height] ? image[:width] : image[:height]
-    image.combine_options do |c|
-      c.gravity 'center'
-      c.crop "#{narrow}x#{narrow}+0+0"
-    end
-=end
-
     image.resize w > maxw ? maxw : w
     image.quality 70
 

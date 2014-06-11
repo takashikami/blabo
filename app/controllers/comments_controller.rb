@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:create]
 
   # GET /comments
   # GET /comments.json
@@ -26,6 +27,7 @@ class CommentsController < ApplicationController
   def create
     @subject = Subject.find(params[:subject_id])
     @comment = @subject.comments.new(comment_params)
+    @comment.user_id = current_user.id
 
     respond_to do |format|
       if @comment.save
