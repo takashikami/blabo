@@ -88,14 +88,14 @@ class SubjectsController < ApplicationController
     end
 
   def save_image(file, n)
+    maxw = 640
     image = MiniMagick::Image.read(file.read)
 
-    portrait = image[:width] < image[:height]
-    image_width = image[:width]
+    w = image[:width]
     image.combine_options do |c|
       c.gravity 'center'
-      c.crop "#{image_width}x#{image_width/4*3}+0+0"
-    end
+      c.crop "#{w}x#{w/4*3}+0+0"
+    end if w < image[:height]
 
 =begin
     narrow = image[:width] < image[:height] ? image[:width] : image[:height]
@@ -105,7 +105,7 @@ class SubjectsController < ApplicationController
     end
 =end
 
-    image.resize "640"
+    image.resize w > maxw ? maxw : w
     image.quality 70
 
     shareddir = ENV['USER'] == 'deploy' ? '/data/blabo/shared' : Rails.root.to_path
