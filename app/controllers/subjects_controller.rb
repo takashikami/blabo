@@ -5,7 +5,7 @@ class SubjectsController < ApplicationController
   # GET /subjects
   # GET /subjects.json
   def index
-    @subjects = Subject.all
+    @subjects = Subject.order('updated_at DESC')
   end
   def list
     @subjects = Subject.all
