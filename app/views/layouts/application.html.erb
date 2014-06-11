@@ -5,30 +5,27 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <!-- <script src="//use.edgefonts.net/aladin.js"></script> -->
   <%= csrf_meta_tags %>
 </head>
 <body>
 <div data-role="page" id="wrap">
 
 <div data-role="header" data-position="fixed" style="overflow: hidden">
-  <!-- <h1 style="font-family: aladin, sans-serif; font-size: 120%;">stand by me</h1> -->
   <h1>stand by me</h1>
   <%= link_to 'ホーム', subjects_path, {'data-icon'=>'home', 'class'=>'ui-btn-left'} %>
 
   <% if user_signed_in? %>
-      <%= link_to 'ログアウト', destroy_user_session_path, {method: :delete, 'data-icon'=>'user', 'class'=>'ui-btn-right'} %>
+      <%= link_to 'ログアウト', destroy_user_session_path, {method: :delete, 'data-icon'=>'user', 'class'=>'ui-btn-right', 'rel' => 'external'} %>
   <% else %>
-      <%= link_to 'ログイン', user_omniauth_authorize_path(:facebook), {'data-icon'=>'user', 'class'=>'ui-btn-right'} %>
+      <%= link_to 'ログイン', user_omniauth_authorize_path(:facebook), {'data-icon'=>'user', 'class'=>'ui-btn-right', 'rel' => 'external'} %>
   <% end %>
 
-<!--  <a href="#" data-icon="user" class="ui-btn-right">ログイン</a> -->
-<div data-role="navbar">
-  <ul>
-    <li><%= link_to '叱ってもらう', new_subject_path %></li>
-    <li><%= link_to '褒めてもらう', '#' %></li>
-  </ul>
-</div>
+  <div data-role="navbar">
+    <ul>
+      <li><%= link_to '叱ってもらう', new_subject_path %></li>
+      <li><%= link_to '褒めてもらう', '#' %></li>
+    </ul>
+  </div>
 </div>
 
   <p class="notice"><%= notice %></p>
