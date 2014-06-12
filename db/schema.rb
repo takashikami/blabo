@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20140611081157) do
     t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
+    t.integer  "user_id",    null: false
   end
 
   create_table "subjects", force: true do |t|
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20140611081157) do
     t.text     "quote"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
+    t.integer  "user_id",    null: false
   end
 
   create_table "users", force: true do |t|

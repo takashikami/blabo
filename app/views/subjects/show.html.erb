@@ -10,10 +10,15 @@
 <hr>
 
 <%= render partial: 'comment_form' %>
+<hr>
 
+<ul data-role="listview">
 <% @subject.comments.each do |comment| %>
-<div>
-  <hr>
+<li>
+  <%= image_tag comment.user.try(:image), {'class' => 'ui-li-icon'} %>
+  <p><%= comment.user.try(:name) %></p>
+  <p class="ui-li-aside"><%= comment.updated_at.strftime('%Y-%m-%d %H:%M') if comment.updated_at %></p>
   <%= comment.comment %>
-</div>
+</li>
 <% end %>
+</ul>
