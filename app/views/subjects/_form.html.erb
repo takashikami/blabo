@@ -11,13 +11,15 @@
     </div>
   <% end %>
 
+  <%= hidden_field :subject, :cat %>
+
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
   <div class="field">
     <%= f.label :pic %><br>
-    <%= f.file_field :file, accept: 'image/jpeg' %>
+    <%= f.file_field :file, accept: 'image/png,image/gif,image/jpeg' %>
   </div>
   <div class="field">
     <%= f.label :quote %><br>

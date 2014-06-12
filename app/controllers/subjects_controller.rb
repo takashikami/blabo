@@ -20,6 +20,7 @@ class SubjectsController < ApplicationController
   # GET /subjects/new
   def new
     @subject = current_user.subjects.new
+    @subject.cat = params[:cat].to_i if params[:cat]
   end
 
   # GET /subjects/1/edit
@@ -84,7 +85,7 @@ class SubjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subject_params
-      params.require(:subject).permit(:title, :pic, :quote)
+      params.require(:subject).permit(:title, :pic, :quote, :cat)
     end
 
   def save_image(file, n)
