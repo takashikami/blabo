@@ -13,17 +13,17 @@ default: &default
 
 development:
   <<: *default
-  database: blabo_development
+  database: blabo
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: blabo_test
+  database: blabo
 
 production:
   <<: *default
-  database: blabo_production
+  database: blabo
 #  username: blabo
 #  password: <%= ENV['BLABO_DATABASE_PASSWORD'] %>
