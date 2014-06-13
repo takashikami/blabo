@@ -8,16 +8,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div data-role="page" id="wrap">
+<div data-role="page" id="main">
 
 <div data-role="header" data-position="fixed" style="overflow: hidden">
   <h1>stand by me</h1>
   <%= link_to 'ホーム', subjects_path, {'data-icon'=>'home', 'class'=>'ui-btn-left'} %>
 
   <% if user_signed_in? %>
-      <%= link_to 'ログアウト', destroy_user_session_path, {method: :delete, 'data-icon'=>'user', 'class'=>'ui-btn-right', 'rel' => 'external'} %>
+      <%= link_to 'プロファイル', user_profile_path, {'data-icon'=>'user', 'class'=>'ui-btn-right'} %>
   <% else %>
-      <%= link_to 'ログイン', user_omniauth_authorize_path(:facebook), {'data-icon'=>'user', 'class'=>'ui-btn-right', 'rel' => 'external'} %>
+      <%= link_to 'ログイン', user_login_path, {'data-icon'=>'user', 'class'=>'ui-btn-right'} %>
   <% end %>
 
   <div data-role="navbar">
@@ -32,7 +32,7 @@
   <p class="alert"><%= alert %></p>
 
 <div id="inner">
-<div role="main" class="ui-content" id="main">
+<div role="main" class="ui-content">
   <%= yield %>
 </div>
 <div id="side">

@@ -1,10 +1,14 @@
-<h1><%= @subject.title %></h1>
+<div>
+<%= image_tag @subject.user.try(:image), style: 'max-width:18px; max-height:18px;' %>
+<%= @subject.user.try(:name) %>
+<%= @subject.updated_at.strftime('%Y-%m-%d %H:%M') %>
+</div>
+<hr>
+
+<h2><%= @subject.title %></h2>
 
 <div style="text-align: center;">
   <img src="<%= img_subject_path @subject %>">
-</div>
-
-<div>
   <%= @subject.quote %>
 </div>
 <hr>
@@ -16,9 +20,9 @@
 <% @subject.comments.each do |comment| %>
 <li>
   <%= image_tag comment.user.try(:image), {'class' => 'ui-li-icon'} %>
-  <p><%= comment.user.try(:name) %></p>
+  <%= comment.user.try(:name) %>
   <p class="ui-li-aside"><%= comment.updated_at.strftime('%Y-%m-%d %H:%M') if comment.updated_at %></p>
-  <%= comment.comment %>
+  <hr><%= comment.comment %>
 </li>
 <% end %>
 </ul>

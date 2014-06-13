@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'user/login'
+  get 'user/profile'
+
   devise_for :users, :controllers => { :omniauth_callbacks => "user/omniauth_callbacks" }
   resources :subjects do
     resources :comments
