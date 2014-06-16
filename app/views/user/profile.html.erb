@@ -3,6 +3,6 @@
   <%= current_user.name %>
 </h2>
 <hr><br>
-<%= link_to '投稿一覧', '#', {'class'=>'ui-btn'} %>
-<%= link_to 'コメント一覧', '#', {'class'=>'ui-btn'} %>
+<%= link_to '投稿一覧', subjects_path(user_id: current_user.id), {'class'=>'ui-btn'} %>
+<%= link_to 'コメントした投稿一覧', subjects_path(comment_user_id: current_user.id), {'class'=>'ui-btn'} %>
 <%= link_to 'ログアウト', destroy_user_session_path, {method: :delete, 'class'=>'ui-btn', 'data-ajax' => 'false'} %>

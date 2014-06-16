@@ -5,7 +5,10 @@ class SubjectsController < ApplicationController
   # GET /subjects
   # GET /subjects.json
   def index
-    @subjects = Subject.order('updated_at DESC')
+    @subjects = Subject.all
+    @subjects = Subject.where(user_id: current_user.id) if params[:user_id]
+    @subjects = Subject.joins(:comments).where(comments:{user_id:params[:comment_user_id]}) if params[:comment_user_id]
+    @subjects = @subjects.order(updated_at: :desc)
   end
   def list
     @subjects = Subject.all
