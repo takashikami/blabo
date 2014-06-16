@@ -6,8 +6,9 @@ class SubjectsController < ApplicationController
   # GET /subjects.json
   def index
     @subjects = Subject.all
-    @subjects = Subject.where(user_id: params[:user_id]) if params[:user_id]
-    @subjects = Subject.joins(:comments).where(comments:{user_id:params[:comment_user_id]}) if params[:comment_user_id]
+    @subjects = @subjects.where(cat: params[:cat]) if params[:cat]
+    @subjects = @subjects.where(user_id: params[:user_id]) if params[:user_id]
+    @subjects = @subjects.joins(:comments).where(comments:{user_id:params[:comment_user_id]}) if params[:comment_user_id]
     @subjects = @subjects.order(updated_at: :desc)
   end
   def list

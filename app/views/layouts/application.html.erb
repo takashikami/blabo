@@ -22,6 +22,10 @@
 
   <div data-role="navbar">
     <ul>
+      <li><%= link_to '叱って欲しい', subjects_path(cat:1) %></li>
+      <li><%= link_to '褒めて欲しい', subjects_path(cat:2) %></li>
+    </ul>
+    <ul>
       <li><%= link_to '叱ってもらう', new_subject_path(cat:1) %></li>
       <li><%= link_to '褒めてもらう', new_subject_path(cat:2) %></li>
     </ul>
