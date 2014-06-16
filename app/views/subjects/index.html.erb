@@ -5,7 +5,6 @@
       link_to img + subject.user.try(:name), user_profile_path(user_id:subject.user_id), {'data-icon'=>'false'}
   %>
     <p class="ui-li-aside"><%= subject.updated_at.strftime('%Y-%m-%d %H:%M') %></p>
-  <hr>
     <h1><%= subject.title %></h1>
     <div style="text-align: center; width:100%; max-height:200px; overflow: hidden">
       <%= link_to image_tag(img_subject_path(subject)), subject %>
