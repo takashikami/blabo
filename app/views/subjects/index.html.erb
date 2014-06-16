@@ -1,8 +1,9 @@
 <ul data-role="listview">
 <% @subjects.each do |subject| %>
-<li>
-    <%= image_tag subject.user.try(:image), {'class' => 'ui-li-icon'} %>
-    <%= subject.user.try(:name) %>
+<li data-icon="false">
+  <%= img = image_tag subject.user.try(:image), {class: 'ui-li-icon', style: 'max-width:18px; max-height:18px;'}
+      link_to img + subject.user.try(:name), user_profile_path(user_id:subject.user_id), {'data-icon'=>'false'}
+  %>
     <p class="ui-li-aside"><%= subject.updated_at.strftime('%Y-%m-%d %H:%M') %></p>
   <hr>
     <h1><%= subject.title %></h1>

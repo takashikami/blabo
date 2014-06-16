@@ -1,7 +1,8 @@
 <div>
-<%= image_tag @subject.user.try(:image), style: 'max-width:18px; max-height:18px;' %>
-<%= @subject.user.try(:name) %>
-<%= @subject.updated_at.strftime('%Y-%m-%d %H:%M') %>
+  <%= img = image_tag @subject.user.try(:image), {class: 'ui-li-icon', style: 'max-width:18px; max-height:18px;'}
+    link_to img + @subject.user.try(:name), user_profile_path(user_id: @subject.user_id), {'data-icon'=>'false'}
+  %>
+  <p class="ui-li-aside"><%= @subject.updated_at.strftime('%Y-%m-%d %H:%M') %></p>
 </div>
 <hr>
 

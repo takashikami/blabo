@@ -1,8 +1,10 @@
 <h2>
-  <%= image_tag current_user.image, style: 'max-width:24px;max-height:24px' %>
-  <%= current_user.name %>
+  <%= image_tag @user.image, style: 'max-width:24px;max-height:24px' %>
+  <%= @user.name %>
 </h2>
 <hr><br>
-<%= link_to '投稿一覧', subjects_path(user_id: current_user.id), {'class'=>'ui-btn'} %>
-<%= link_to 'コメントした投稿一覧', subjects_path(comment_user_id: current_user.id), {'class'=>'ui-btn'} %>
+<%= link_to '投稿一覧', subjects_path(user_id: @user.id), {'class'=>'ui-btn'} %>
+<%= link_to 'コメントした投稿一覧', subjects_path(comment_user_id: @user.id), {'class'=>'ui-btn'} %>
+<% if user_signed_in? %>
 <%= link_to 'ログアウト', destroy_user_session_path, {method: :delete, 'class'=>'ui-btn', 'data-ajax' => 'false'} %>
+<% end %>
