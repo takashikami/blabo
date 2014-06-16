@@ -1,0 +1,8 @@
+<h2>
+  <%= image_tag current_user.image, style: 'max-width:24px;max-height:24px' %>
+  <%= current_user.name %>
+</h2>
+<hr><br>
+<%= link_to '投稿一覧', '#', {'class'=>'ui-btn'} %>
+<%= link_to 'コメント一覧', '#', {'class'=>'ui-btn'} %>
+<%= link_to 'ログアウト', destroy_user_session_path, {method: :delete, 'class'=>'ui-btn', 'data-ajax' => 'false'} %>
