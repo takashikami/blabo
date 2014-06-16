@@ -11,6 +11,7 @@ class UserController < ApplicationController
     end
     respond_to do |format|
       if @user
+        @score = Comment.where(user_id: @user.id).joins(:goods).sum(:score)
         format.html { render :profile }
       else
         format.html { render :login }
