@@ -19,11 +19,13 @@
 
 <ul data-role="listview">
 <% @subject.comments.each do |comment| %>
-<li>
-  <%= image_tag comment.user.try(:image), {'class' => 'ui-li-icon'} %>
-  <%= comment.user.try(:name) %>
+<li data-icon="false">
+  <%= img = image_tag comment.user.try(:image), {class: 'ui-li-icon', style: 'max-width:18px; max-height:18px;'}
+      link_to img + comment.user.try(:name), user_profile_path(user_id: comment.user_id), {'data-icon'=>'false'}
+  %>
   <p class="ui-li-aside"><%= comment.updated_at.strftime('%Y-%m-%d %H:%M') if comment.updated_at %></p>
-  <hr><%= comment.comment %>
+  <hr>
+  <%= comment.comment %>
 </li>
 <% end %>
 </ul>
