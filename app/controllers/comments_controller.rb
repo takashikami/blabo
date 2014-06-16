@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:create]
+  before_action :authenticate_user!, only: [:create, :inc]
 
   # GET /comments
   # GET /comments.json
@@ -61,6 +61,24 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def inc
+    p params
+    @comment = Comment.find params[:comment_id]
+    checked = @comment.goods.where(user_id: current_user.id) if @comment.goods.size > 0
+    unless checked
+      good = @comment.goods.new user_id: current_user.id
+      good.save
+    end
+    @subject = Subject.find params[:subject_id]
+    respond_to do |format|
+      if good
+        format.html { redirect_to @subject, notice: 'made good'}
+      else
+        format.html { redirect_to @subject, notice: 'not made'}
+      end
     end
   end
 

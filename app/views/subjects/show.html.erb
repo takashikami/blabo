@@ -18,12 +18,16 @@
 <hr>
 
 <ul data-role="listview">
-<% @subject.comments.each do |comment| %>
+<% @subject.comments.order(updated_at: :desc).each do |comment| %>
 <li data-icon="false">
   <%= img = image_tag comment.user.try(:image), {class: 'ui-li-icon', style: 'max-width:18px; max-height:18px;'}
       link_to img + comment.user.try(:name), user_profile_path(user_id: comment.user_id), {'data-icon'=>'false'}
   %>
   <p class="ui-li-aside"><%= comment.updated_at.strftime('%Y-%m-%d %H:%M') if comment.updated_at %></p>
+  <p>
+    ❤：<%= comment.goods.sum :score %>
+    <%= link_to 'いいね！', subject_comment_goods_url(comment.subject_id, comment.id), method: :post %>
+  </p>
   <%= comment.comment %>
 </li>
 <% end %>

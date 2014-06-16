@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "user/omniauth_callbacks" }
   resources :subjects do
-    resources :comments
+    resources :comments do
+      post 'goods' => 'comments#inc'
+    end
     get :img, on: :member
     get :list, on: :collection
   end
