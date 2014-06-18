@@ -1,3 +1,5 @@
+<div><%= Subject::CAT[@subject.cat] %></div>
+
 <div>
   <%= img = image_tag @subject.user.try(:image), {class: 'ui-li-icon', style: 'max-width:18px; max-height:18px;'}
     link_to img + @subject.user.try(:name), user_profile_path(user_id: @subject.user_id), {'data-icon'=>'false'}
