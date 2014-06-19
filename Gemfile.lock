@@ -60,6 +60,9 @@ GEM
       railties (>= 3.1.0)
     json (1.8.1)
     jwt (1.0.0)
+    kaminari (0.16.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     kgio (2.9.2)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -169,6 +172,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery_mobile_rails
+  kaminari
   mini_magick
   mysql2
   omniauth-facebook

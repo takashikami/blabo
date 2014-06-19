@@ -5,14 +5,19 @@ class SubjectsController < ApplicationController
   # GET /subjects
   # GET /subjects.json
   def index
-    @subjects = Subject.all
+    @subjects = Subject.order(updated_at: :desc)
     @subjects = @subjects.where(cat: params[:cat]) if params[:cat]
     @subjects = @subjects.where(user_id: params[:user_id]) if params[:user_id]
     @subjects = @subjects.joins(:comments).where(comments:{user_id:params[:comment_user_id]}) if params[:comment_user_id]
-    @subjects = @subjects.order(updated_at: :desc)
+    @subjects = @subjects.page(params[:page])
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
   def list
-    @subjects = Subject.all
+    @subjects = Subject.page
   end
 
   # GET /subjects/1

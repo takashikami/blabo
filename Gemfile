@@ -48,3 +48,4 @@ gem 'omniauth-twitter'
 
 # Image
 gem 'mini_magick'
+gem 'kaminari'

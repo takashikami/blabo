@@ -1,0 +1,2 @@
+$(".nextpage").html("<hr><%= j(link_to_next_page @subjects, 'もっと見る', remote: true, 'data-ajax'=>'false') %>");
+$("#subjects").append("<%= j(render partial: 'subjects') %>");
